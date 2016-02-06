@@ -26,6 +26,9 @@ class Model(db.Model):
 
     brand = db.relationship('Brand')
 
+    def __repr__(self):
+        return "<Model id=%d name=%s brand=%s>" % (self.id, self.name, self.brand_name)
+
 
 class Brand(db.Model):
 
@@ -37,9 +40,12 @@ class Brand(db.Model):
     name = db.Column(db.String(50), nullable=False)
     founded = db.Column(db.Integer)
     headquarters = db.Column(db.String(50))
-    discontinued = db.Integer
+    discontinued = db.Column(db.Integer)
 
     models = db.relationship('Model')
+
+    def __repr__(self):
+        return "<Brand id=%d name=%s>" % (self.id, self.name)
 
 
 # End Part 1
